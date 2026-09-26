@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08050c">
+<title>For My Love ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap');
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  color:#fff;
+  background:#08050c;
+  font-family:'Noto Serif Bengali','Cormorant Garamond',serif;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed; inset:0; pointer-events:none; z-index:20;
+  background:radial-gradient(circle at center,transparent 35%,rgba(0,0,0,.55) 100%);
+}
+canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2}
+.bg{
+  position:fixed;inset:0;z-index:-3;
+  background:
+   radial-gradient(circle at 15% 20%,rgba(255,54,111,.20),transparent 28%),
+   radial-gradient(circle at 85% 75%,rgba(152,59,255,.18),transparent 30%),
+   radial-gradient(circle at 50% 45%,rgba(255,120,160,.07),transparent 35%),
+   linear-gradient(135deg,#09050c,#180914 45%,#08050c);
+  animation:bgmove 12s ease-in-out infinite alternate;
+}
+@keyframes bgmove{from{filter:hue-rotate(0deg);transform:scale(1)}to{filter:hue-rotate(12deg);transform:scale(1.08)}}
+
+#intro{
+  position:fixed;inset:0;z-index:100;
+  display:flex;align-items:center;justify-content:center;
+  background:#08050c;
+  transition:opacity 1.2s ease,visibility 1.2s;
+}
+#intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-inner{text-align:center;padding:25px}
+.intro-heart{
+  font-size:76px;display:inline-block;
+  animation:heartbeat 1.2s infinite;
+  filter:drop-shadow(0 0 30px rgba(255,72,124,.8));
+}
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  15%{transform:scale(1.25)}
+  30%{transform:scale(1)}
+  45%{transform:scale(1.14)}
+}
+.intro-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,11vw,82px);
+  margin:15px 0 5px;
+  background:linear-gradient(90deg,#fff,#ffb4c9,#fff);
+  background-size:200%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shine 3s linear infinite;
+}
+@keyframes shine{to{background-position:200%}}
+.intro-sub{color:#bca8b8;letter-spacing:4px;font-family:Arial,sans-serif;font-size:11px}
+.open-btn{
+  margin-top:34px;padding:15px 34px;border:1px solid rgba(255,255,255,.25);
+  border-radius:50px;background:rgba(255,255,255,.07);color:white;
+  font-family:inherit;font-size:16px;cursor:pointer;
+  box-shadow:0 0 35px rgba(255,70,120,.15);
+  transition:.3s;
+}
+.open-btn:hover{transform:translateY(-3px);background:rgba(255,255,255,.13);box-shadow:0 0 50px rgba(255,70,120,.3)}
+
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:70px 20px;position:relative;text-align:center;
+}
+.hero-content{max-width:900px}
+.kicker{
+  color:#d8aebe;letter-spacing:5px;font:11px Arial,sans-serif;
+  text-transform:uppercase;opacity:0;animation:rise 1.2s .7s forwards;
+}
+.hero h1{
+  margin:22px 0 12px;
+  font:600 clamp(50px,13vw,110px)/.9 'Cormorant Garamond',serif;
+  background:linear-gradient(135deg,#fff 20%,#ffc2d3 50%,#fff 80%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:200%;animation:rise 1.2s .9s forwards,shine 5s linear infinite;
+  opacity:0;
+}
+.hero p{
+  color:#d8cbd5;font-size:clamp(16px,3vw,21px);letter-spacing:1px;
+  opacity:0;animation:rise 1.2s 1.2s forwards;
+}
+.scroll{
+  position:absolute;bottom:35px;left:50%;transform:translateX(-50%);
+  color:#988693;font:10px Arial,sans-serif;letter-spacing:3px;
+  animation:scrollpulse 2s infinite;
+}
+@keyframes scrollpulse{50%{opacity:.35;transform:translate(-50%,7px)}}
+@keyframes rise{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(25px)}}
+
+.section{padding:100px 18px;position:relative}
+.container{max-width:760px;margin:auto}
+.glass{
+  background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:30px;padding:clamp(25px,6vw,55px);
+  box-shadow:0 30px 100px rgba(0,0,0,.35),inset 0 1px rgba(255,255,255,.08);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
+.label{
+  font:10px Arial,sans-serif;letter-spacing:4px;color:#d88fa8;
+  text-transform:uppercase;margin-bottom:20px;
+}
+.message{
+  font-size:clamp(17px,4vw,21px);line-height:2;color:#eee4eb;
+}
+.message p{margin:0 0 25px}
+.dropcap:first-letter{font-size:4em;float:left;line-height:.75;padding:8px 10px 0 0;color:#ff8eac}
+.quote{
+  position:relative;margin:38px 0;padding:30px 25px;
+  border-left:2px solid #ff789d;
+  background:linear-gradient(90deg,rgba(255,90,135,.08),transparent);
+  color:#ffe4ec;font:italic 500 clamp(21px,5vw,29px)/1.65 'Cormorant Garamond',serif;
+}
+.quote:before{content:'“';position:absolute;left:-5px;top:-35px;font:90px Georgia;color:#ff789d;opacity:.25}
+
+.reveal{opacity:0;transform:translateY(55px);transition:1s ease}
+.reveal.show{opacity:1;transform:none}
+
+.divider{text-align:center;color:#ff7198;font-size:22px;letter-spacing:15px;margin:20px 0}
+.divider span{display:inline-block;animation:dot 1.6s infinite}
+.divider span:nth-child(2){animation-delay:.2s}.divider span:nth-child(3){animation-delay:.4s}
+@keyframes dot{50%{transform:translateY(-8px);opacity:.5}}
+
+.final{
+  min-height:85vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:80px 20px;
+}
+.final-box{max-width:700px}
+.final-heart{font-size:58px;animation:heartbeat 1.3s infinite;display:inline-block}
+.final h2{
+  font:600 clamp(40px,10vw,78px) 'Cormorant Garamond',serif;
+  margin:20px 0;color:#ffeaf0;
+}
+.final p{font-size:clamp(17px,4vw,23px);line-height:1.9;color:#d9ccd5}
+.signature{
+  margin-top:40px;font:italic 28px 'Cormorant Garamond',serif;color:#ffabc0;
+}
+
+.music{
+ position:fixed;right:18px;bottom:18px;z-index:30;
+ width:48px;height:48px;border-radius:50%;
+ border:1px solid rgba(255,255,255,.18);background:rgba(20,10,20,.7);
+ color:white;cursor:pointer;backdrop-filter:blur(10px);
+}
+.music.playing{animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.cursor-heart{
+ position:fixed;pointer-events:none;z-index:50;font-size:15px;
+ animation:cursorfloat 1s forwards;
+}
+@keyframes cursorfloat{
+ to{transform:translateY(-45px) scale(.2);opacity:0}
+}
+
+@media(max-width:500px){
+ .hero{min-height:92vh}
+ .section{padding:70px 12px}
+ .glass{border-radius:24px}
+}
+</style>
+</head>
+
+<body>
+<div class="bg"></div>
+<canvas id="particles"></canvas>
+
+<div id="intro">
+  <div class="intro-inner">
+    <div class="intro-heart">❤️</div>
+    <div class="intro-title">For My Love</div>
+    <div class="intro-sub">A little something from my heart</div>
+    <button class="open-btn" onclick="openLetter()">Open My Heart ✨</button>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="kicker">To the woman I love</div>
+    <h1>You Don't<br>Have To Be Strong</h1>
+    <p>Sometimes, you just need someone who lets you be you.</p>
+  </div>
+  <div class="scroll">SCROLL SLOWLY ↓</div>
+</section>
+
+<section class="section">
+ <div class="container glass reveal">
+   <div class="label">A letter from me</div>
+   <div class="message">
+    <p class="dropcap">তোমাকে সবসময় শক্ত থাকতে হবে না, ভালোবাসা। ❤️</p>
+    <p>হয়তো সবসময় বুঝতে পারি না তোমার মনের ভেতর কতটা কথা জমে আছে, কতটা কষ্ট তুমি চুপচাপ সহ্য করো। হয়তো কখনো কখনো তোমার “আমি ভালো আছি” কথাটাও ঠিকভাবে বুঝে উঠতে পারি না।</p>
+    <p>কিন্তু একটা কথা মনে রেখো—</p>
+
+    <div class="quote">
+      তোমার কষ্টগুলো তোমাকে একা বহন করতে হবে না।
+    </div>
+
+    <p>তোমার সামনে তোমাকে শক্ত হওয়ার কোনো অভিনয় করতে হবে না। তুমি চাইলে আমার সামনে ভেঙে পড়তে পারো, কাঁদতে পারো, রাগ করতে পারো, চুপ করে থাকতে পারো।</p>
+    <p>তোমাকে কেন কাঁদছো তার ব্যাখ্যাও দিতে হবে না। তোমার চোখের পানি দেখলে তোমাকে প্রশ্ন করার আগে তোমাকে জড়িয়ে ধরাটাই আমার কাজ।</p>
+
+    <div class="divider"><span>♥</span><span>♥</span><span>♥</span></div>
+
+    <p>আমি হয়তো সব সমস্যার সমাধান করতে পারব না। হয়তো তোমার প্রতিটি কষ্টের কারণও বুঝতে পারব না।</p>
+    <p>কিন্তু তোমার পাশে বসে তোমার কষ্টটা ভাগ করে নেওয়ার চেষ্টা আমি সবসময় করব।</p>
+
+    <div class="quote">
+      তুমি দুর্বল হলে আমি তোমাকে কম ভালোবাসব না। বরং তখন তোমাকে আরও শক্ত করে ধরে রাখতে চাই।
+    </div>
+
+    <p>আর যদি কোনোদিন মনে হয় পৃথিবীতে তোমার কথা শোনার মতো কেউ নেই, <strong>তখন আমার কাছে এসো।</strong></p>
+    <p>তোমার সব কথা শোনার জন্য আমি আছি। এমনকি যে কথাগুলো বলতে তোমার ভয় হয়, সেগুলোও।</p>
+   </div>
+ </div>
+</section>
+
+<section class="final">
+ <div class="final-box reveal">
+   <div class="final-heart">❤️</div>
+   <h2>তুমি শুধু আমার স্ত্রী নও…</h2>
+   <p>
+     তুমি আমার আপন মানুষ।<br>
+     আমার কাছে তোমাকে সবসময় শক্ত হওয়ার অভিনয় করতে হবে না।
+   </p>
+   <div class="quote">
+     কখনো কখনো তোমার দুর্বলতাটাও<br>
+     আমার কাছে নিরাপদ হোক।
+   </div>
+   <div class="signature">— তোমার মানুষ, সবসময়</div>
+ </div>
+</section>
+
+<button class="music" id="musicBtn" onclick="toggleMusic()" title="Music">♪</button>
+
+<script>
+function openLetter(){
+  document.getElementById('intro').classList.add('hide');
+  burst();
+}
+
+const observer = new IntersectionObserver(entries=>{
+ entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(x=>observer.observe(x));
+
+/* Floating particle system */
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=innerWidth*devicePixelRatio;H=canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+resize();addEventListener('resize',resize);
+function make(){
+ return {x:Math.random()*innerWidth,y:Math.random()*innerHeight,
+ r:Math.random()*1.7+.3,v:Math.random()*.25+.05,a:Math.random()*.6+.1};
+}
+for(let i=0;i<90;i++)particles.push(make());
+function draw(){
+ ctx.clearRect(0,0,innerWidth,innerHeight);
+ particles.forEach(p=>{
+  p.y-=p.v;if(p.y<0){p.y=innerHeight;p.x=Math.random()*innerWidth}
+  ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+  ctx.fillStyle=`rgba(255,170,195,${p.a})`;ctx.fill();
+ });
+ requestAnimationFrame(draw);
+} draw();
+
+/* Hearts on tap/click */
+addEventListener('pointerdown',e=>{
+ if(e.target.closest('button'))return;
+ const h=document.createElement('div');h.className='cursor-heart';h.textContent=['♡','♥','✦'][Math.floor(Math.random()*3)];
+ h.style.left=e.clientX+'px';h.style.top=e.clientY+'px';
+ document.body.appendChild(h);setTimeout(()=>h.remove(),1000);
+});
+
+/* Intro burst */
+function burst(){
+ for(let i=0;i<35;i++){
+  const h=document.createElement('div');h.className='cursor-heart';h.textContent='♥';
+  h.style.left='50%';h.style.top='50%';
+  h.style.fontSize=(10+Math.random()*18)+'px';
+  const x=(Math.random()-.5)*500,y=(Math.random()-.5)*500;
+  h.animate([{transform:'translate(-50%,-50%) scale(1)',opacity:1},
+             {transform:`translate(calc(-50% + ${x}px),calc(-50% + ${y}px)) scale(.2)`,opacity:0}],
+             {duration:1200+Math.random()*700,easing:'cubic-bezier(.2,.8,.2,1)'});
+  document.body.appendChild(h);setTimeout(()=>h.remove(),2000);
+ }
+}
+
+/* Optional ambient music: uses Web Audio, no external file */
+let audioCtx=null,osc=null,gain=null,playing=false;
+function toggleMusic(){
+ const btn=document.getElementById('musicBtn');
+ if(!audioCtx){
+  audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  osc=audioCtx.createOscillator();gain=audioCtx.createGain();
+  osc.type='sine';osc.frequency.value=261.63;gain.gain.value=0.0001;
+  osc.connect(gain).connect(audioCtx.destination);osc.start();
+ }
+ if(!playing){
+  audioCtx.resume();gain.gain.exponentialRampToValueAtTime(.018,audioCtx.currentTime+.8);
+  playing=true;btn.classList.add('playing');btn.textContent='♫';
+ }else{
+  gain.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.5);
+  playing=false;btn.classList.remove('playing');btn.textContent='♪';
+ }
+}
+</script>
+</body>
+</html>
